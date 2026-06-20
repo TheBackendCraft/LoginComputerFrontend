@@ -1048,12 +1048,13 @@ setInterval(()=>{
 
 </body>
  
- <div id="welcomePopup" class="popup-overlay">
+<input type="checkbox" id="popupToggle" checked>
+<div class="popup-overlay">
     <div class="popup-content">
-        <!-- Closing Button (X) -->
-        <span class="close-btn" onclick="closePopup()">&times;</span>
         
+        <label for="popupToggle" class="close-btn">&times;</label>
         
+       
         <img src="./images/poster1.jpeg" alt="Popup Image" class="popup-img">
     </div>
 </div>
