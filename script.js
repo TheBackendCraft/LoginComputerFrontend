@@ -1,6 +1,84 @@
-// ==========================
-// MOBILE MENU
-// ==========================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    if (menuBtn && mobileMenu) {
+
+        menuBtn.addEventListener("click", () => {
+
+            mobileMenu.classList.toggle("hidden");
+
+            if (menuBtn.innerHTML.trim() === "☰") {
+                menuBtn.innerHTML = "✕";
+            } else {
+                menuBtn.innerHTML = "☰";
+            }
+
+        });
+
+    }
+
+    /* =========================
+       HERO SLIDER
+    ========================= */
+
+    const slider = document.getElementById("heroSlider");
+    const dots = document.querySelectorAll(".dot");
+
+    if (slider && dots.length > 0) {
+
+        let currentSlide = 0;
+
+        const totalSlides = slider.children.length;
+
+        function showSlide(index) {
+
+            slider.style.transform =
+                `translateX(-${index * 100}%)`;
+
+            dots.forEach(dot => {
+                dot.classList.remove("bg-cyan-400");
+                dot.classList.add("bg-slate-600");
+            });
+
+            if (dots[index]) {
+                dots[index].classList.remove("bg-slate-600");
+                dots[index].classList.add("bg-cyan-400");
+            }
+        }
+
+        dots.forEach((dot, index) => {
+
+            dot.addEventListener("click", () => {
+
+                currentSlide = index;
+                showSlide(currentSlide);
+
+            });
+
+        });
+
+        setInterval(() => {
+
+            currentSlide++;
+
+            if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            }
+
+            showSlide(currentSlide);
+
+        }, 5000);
+
+    }
+
+});
 
 const menuBtn = document.querySelector("header button");
 const nav = document.querySelector("nav");
