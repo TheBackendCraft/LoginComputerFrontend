@@ -347,8 +347,8 @@ animation:float 5s ease-in-out infinite;
 /* closing button */
 .close-btn {
     position: absolute;
-    top: -15px; /* show little upside the image */
-    right: -15px; /* show little outside the image */
+    top: -15px;    
+    right: -15px;   
     font-size: 24px;
     background: #ff4757;
     color: white;
@@ -358,13 +358,19 @@ animation:float 5s ease-in-out infinite;
     text-align: center;
     border-radius: 50%; 
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    
+    /* button will be set up side */
+    z-index: 99999 !important; 
+    pointer-events: auto !important;
+    
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     transition: transform 0.2s;
 }
 
 .close-btn:hover {
     transform: scale(1.1); 
 }
+
 
 
 @keyframes float{
