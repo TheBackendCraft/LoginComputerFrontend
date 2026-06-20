@@ -12,10 +12,22 @@ window.onload = function() {
     }, 1000);
 };
 
-// पॉclosing popup function
+    // पॉclosing popup function
 function closePopup() {
-    document.getElementById('welcomePopup').classList.remove('show');
+    var popup = document.getElementById('welcomePopup');
+    if (popup) {
+        popup.classList.remove('show');
+    }
 }
+
+// click anywhere to close popup
+document.addEventListener('click', function(event) {
+    var popup = document.getElementById('welcomePopup');
+    // if clicked on black bakcground then the popup is closed
+    if (event.target === popup) {
+        closePopup();
+    }
+});
 
     
     /* =========================
