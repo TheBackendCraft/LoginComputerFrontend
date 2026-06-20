@@ -294,6 +294,79 @@ transform:translateY(-10px);
 animation:float 5s ease-in-out infinite;
 }
 
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); 
+    backdrop-filter: blur(5px); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+
+.popup-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* पॉpopup box image container */
+.popup-content {
+    background: #ffffff;
+    padding: 15px; 
+    border-radius: 15px; 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+    
+    max-width: 400px; 
+    width: 85%;
+    
+    transform: scale(0.8);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* हल्का सा बाउंस इफेक्ट */
+}
+
+.popup-overlay.show .popup-content {
+    transform: scale(1);
+}
+
+
+.popup-img {
+    width: 100%; 
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+/* closing button */
+.close-btn {
+    position: absolute;
+    top: -15px; /* show little upside the image */
+    right: -15px; /* show little outside the image */
+    font-size: 24px;
+    background: #ff4757;
+    color: white;
+    width: 35px;
+    height: 35px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 50%; 
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+
+.close-btn:hover {
+    transform: scale(1.1); 
+}
+
+
 @keyframes float{
 0%,100%{
 transform:translateY(0px);
