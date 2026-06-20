@@ -4,30 +4,38 @@ document.addEventListener("DOMContentLoaded", () => {
 window.onload = function() {
     setTimeout(function() {
         var popup = document.getElementById('welcomePopup');
-        if(popup) {
+        if (popup) {
             popup.classList.add('show');
-        } else {
-            console.log("Error: 'welcomePopup' ID वाली HTML नहीं मिली!");
         }
     }, 1000);
+
+    
+    var closeBtn = document.getElementById('popupCloseBtn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function(event) {
+            event.stopPropagation(); ा
+            closePopup();
+        });
+    }
+
+    // click anywhere on the screen
+    var popup = document.getElementById('welcomePopup');
+    if (popup) {
+        popup.addEventListener('click', function(event) {
+            if (event.target === popup) {
+                closePopup();
+            }
+        });
+    }
 };
 
-    // पॉclosing popup function
+// पॉपअप बंद करने का कॉमन फंक्शन
 function closePopup() {
     var popup = document.getElementById('welcomePopup');
     if (popup) {
         popup.classList.remove('show');
     }
 }
-
-// click anywhere to close popup
-document.addEventListener('click', function(event) {
-    var popup = document.getElementById('welcomePopup');
-    // if clicked on black bakcground then the popup is closed
-    if (event.target === popup) {
-        closePopup();
-    }
-});
 
     
     /* =========================
