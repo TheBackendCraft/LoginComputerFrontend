@@ -1,6 +1,23 @@
 
 document.addEventListener("DOMContentLoaded", () => {
+// popup on website loading
+window.onload = function() {
+    setTimeout(function() {
+        var popup = document.getElementById('welcomePopup');
+        if(popup) {
+            popup.classList.add('show');
+        } else {
+            console.log("Error: 'welcomePopup' ID वाली HTML नहीं मिली!");
+        }
+    }, 1000);
+};
 
+// पॉclosing popup function
+function closePopup() {
+    document.getElementById('welcomePopup').classList.remove('show');
+}
+
+    
     /* =========================
        MOBILE MENU
     ========================= */
