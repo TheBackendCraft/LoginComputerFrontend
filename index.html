@@ -1016,7 +1016,7 @@ const slider = document.getElementById("heroSlider");
 const dots = document.querySelectorAll(".dot");
 
 let currentSlide = 0;
-const totalSlides = 5;
+const totalSlides = 3;
 
 function updateSlider(){
 
@@ -1047,4 +1047,14 @@ setInterval(()=>{
 </script>
 
 </body>
+ 
+ <div id="welcomePopup" class="popup-overlay">
+    <div class="popup-content">
+        <!-- Closing Button (X) -->
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        
+        
+        <img src="./images/poster1.jpeg" alt="Popup Image" class="popup-img">
+    </div>
+</div>
 </html>
