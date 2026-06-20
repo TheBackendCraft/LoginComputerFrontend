@@ -7,8 +7,8 @@ window.onload = function() {
         if (popup) {
             popup.classList.add('show');
         }
-    }, 1000);
-
+    }, 1000); // 1 सेकंड का डिले
+};
     
     var closeBtn = document.getElementById('popupCloseBtn');
     if (closeBtn) {
