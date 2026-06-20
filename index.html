@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Login Computer | Digital Service Hub</title>
+<div class="title-line"></div>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -12,56 +13,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
 <style>
-body{
-font-family:'Plus Jakarta Sans',sans-serif;
-scroll-behavior:smooth;
-}
 
-.gradient-text{
-background:linear-gradient(to right,#06b6d4,#3b82f6);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.hero-bg{
-background:
-radial-gradient(circle at top left,#0891b2 0%,transparent 40%),
-radial-gradient(circle at bottom right,#2563eb 0%,transparent 40%),
-#020617;
-}
-
-.glass{
-backdrop-filter:blur(18px);
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-}
-
-.card-hover{
-transition:.4s;
-}
-
-.card-hover:hover{
-transform:translateY(-10px);
-}
-
-.floating{
-animation:float 5s ease-in-out infinite;
-}
-
-@keyframes float{
-0%,100%{
-transform:translateY(0px);
-}
-50%{
-transform:translateY(-15px);
-}
-}
 </style>
 
 </head>
+<script>
 
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuBtn.addEventListener("click", () => {
+mobileMenu.classList.toggle("hidden");
+});
+
+</script>
 <body class="bg-slate-950 text-white">
 
 <!-- ===================== -->
@@ -79,6 +47,7 @@ COMPUTER
 </span>
 </div>
 
+<!-- Desktop Menu -->
 <nav class="hidden md:flex items-center gap-8">
 
 <a href="#home" class="hover:text-cyan-400 transition">
@@ -100,13 +69,47 @@ Order Online
 
 </nav>
 
-<button class="md:hidden text-3xl">
+<!-- Mobile Button -->
+
+<button
+id="menuBtn"
+class="md:hidden text-3xl text-cyan-400">
+
 ☰
 </button>
 
 </div>
 
 </header>
+
+
+<!-- YAHAN PASTE KAR -->
+
+<div
+id="mobileMenu"
+class="hidden md:hidden bg-slate-900 border-t border-slate-800">
+
+<a href="#home"
+class="block px-6 py-4 border-b border-slate-800">
+Home
+</a>
+
+<a href="#services"
+class="block px-6 py-4 border-b border-slate-800">
+Services
+</a>
+
+<a href="marketplace.html"
+class="block px-6 py-4 border-b border-slate-800">
+Store
+</a>
+
+<a href="#order"
+class="block px-6 py-4 text-cyan-400 font-semibold">
+Order Online
+</a>
+
+</div>
 
 <!-- ===================== -->
 <!-- HERO SECTION -->
@@ -210,41 +213,8 @@ Shop Products
 
             </div>
 
+
             <!-- Slide 3 -->
-
-            <div class="min-w-full relative">
-
-                <img
-                src="images/janseva.png"
-                class="w-full h-[500px] object-cover"
-                alt="Jan Seva">
-
-                <div class="absolute inset-0 bg-black/40"></div>
-
-                <span class="absolute bottom-6 left-6 bg-cyan-500 px-4 py-2 rounded-xl font-semibold">
-                    Jan Seva Kendra
-                </span>
-
-            </div>
-
-            <!-- Slide 4 -->
-
-            <div class="min-w-full relative">
-
-                <img
-                src="images/aeps.jpg"
-                class="w-full h-[500px] object-cover"
-                alt="AEPS">
-
-                <div class="absolute inset-0 bg-black/40"></div>
-
-                <span class="absolute bottom-6 left-6 bg-cyan-500 px-4 py-2 rounded-xl font-semibold">
-                    AEPS Banking
-                </span>
-
-            </div>
-
-            <!-- Slide 5 -->
 
             <div class="min-w-full relative">
 
@@ -343,6 +313,102 @@ Print Orders
 Years Experience
 </p>
 
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ===================== -->
+<!-- THESIS COLORS -->
+<!-- ===================== -->
+
+<section class="py-24">
+
+<div class="max-w-7xl mx-auto px-6">
+
+<div class="text-center mb-16">
+
+<span class="text-cyan-400 uppercase tracking-[4px] font-semibold">
+Premium Thesis Collection
+</span>
+
+<h2 class="text-5xl md:text-6xl font-bold mt-4">
+All Colour
+<span class="gradient-text">
+Project Files Available
+</span>
+</h2>
+
+<p class="text-slate-400 mt-4 max-w-2xl mx-auto">
+Choose from our premium thesis and project file collection.
+Available in multiple professional colours for colleges,
+universities and final year submissions.
+</p>
+
+</div>
+
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+<!-- GREEN -->
+<div class="thesis-card">
+<img src="./images/green.png" alt="Green File">
+<div class="thesis-content">
+<span class="color-badge bg-green-500">GREEN</span>
+<h3>Green Project File</h3>
+<p>Premium quality thesis binding cover.</p>
+</div>
+</div>
+
+<!-- NAVY BLUE -->
+<div class="thesis-card">
+<img src="./images/navyblue.png" alt="Navy Blue File">
+<div class="thesis-content">
+<span class="color-badge bg-blue-800">NAVY BLUE</span>
+<h3>Navy Blue Project File</h3>
+<p>Professional university submission look.</p>
+</div>
+</div>
+
+<!-- BLACK -->
+<div class="thesis-card">
+<img src="./images/black.png" alt="Black File">
+<div class="thesis-content">
+<span class="color-badge bg-black">BLACK</span>
+<h3>Black Project File</h3>
+<p>Elegant premium hardcover finish.</p>
+</div>
+</div>
+
+<!-- WHITE -->
+<div class="thesis-card">
+<img src="./images/white.png" alt="White File">
+<div class="thesis-content">
+<span class="color-badge bg-slate-300 text-black">WHITE</span>
+<h3>White Project File</h3>
+<p>Clean and modern academic appearance.</p>
+</div>
+</div>
+
+<!-- RED -->
+<div class="thesis-card">
+<img src="./images/red.png" alt="Red File">
+<div class="thesis-content">
+<span class="color-badge bg-red-600">RED</span>
+<h3>Red Project File</h3>
+<p>Bold and attractive presentation style.</p>
+</div>
+</div>
+
+<!-- MAROON -->
+<div class="thesis-card">
+<img src="./images/maroon.png" alt="Maroon File">
+<div class="thesis-content">
+<span class="color-badge bg-red-900">MAROON</span>
+<h3>Maroon Project File</h3>
+<p>Most popular thesis submission colour.</p>
+</div>
 </div>
 
 </div>
