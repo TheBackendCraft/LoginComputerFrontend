@@ -11,18 +11,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.getElementById("menuBtn");
   const mobileMenu = document.getElementById("mobileMenu");
 
- // Toggle Navigation Context
- if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener("click", () => {
-            const expanded = menuBtn.getAttribute("aria-expanded") === "true";
-            menuBtn.setAttribute("aria-expanded", !expanded);
-            mobileMenu.classList.toggle("hidden");
+// Toggle Navigation Context
+if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", () => {
+        const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+        menuBtn.setAttribute("aria-expanded", !expanded);
+        mobileMenu.classList.toggle("hidden");
+    }); 
 
     mobileMenu.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
-        menuBtn.setAttribute("aria-expanded", "false");
-      });
+        link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+            menuBtn.setAttribute("aria-expanded", "false");
+        });
+    }); 
+}
+
 
   // ==========================
   // HERO SLIDER
