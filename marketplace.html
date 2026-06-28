@@ -3,773 +3,418 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Marketplace | Login Computer</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-
+<meta name="description" content="Buy computer accessories and gadgets at Login Computer Chhutmalpur — mouse, keyboard, pendrive, headphones, SSD, RAM, CCTV and more.">
+<link rel="icon" type="image/png" href="./images/MyLogo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-
-body{
-font-family:'Plus Jakarta Sans',sans-serif;
-background:#020617;
-color:white;
-}
-
-.glass{
-backdrop-filter:blur(18px);
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-}
-
-.gradient-text{
-background:linear-gradient(to right,#06b6d4,#3b82f6);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.product-card{
-transition:.4s;
-}
-
-.product-card:hover{
-transform:translateY(-10px);
-}
-
-</style>
-
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 </head>
 
 <body>
 
 <!-- NAVBAR -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <img src="./images/MyLogo.png" alt="Login Computer Logo" class="brand-logo">
+      <span class="brand-text">LOGIN <span class="brand-accent">COMPUTER</span></span>
+    </a>
 
-<header class="fixed top-0 left-0 w-full z-50 glass">
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="marketplace.html" class="active">Store</a>
+      <a href="index.html#order" class="btn-nav">Order Online</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
 
-<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <button id="menuBtn" class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
 
-<a href="index.html" class="text-2xl font-extrabold">
-LOGIN
-<span class="text-cyan-400">COMPUTER</span>
-</a>
-
-<nav class="hidden md:flex gap-8">
-
-<a href="index.html">Home</a>
-
-
-<a href="marketplace.html" class="text-cyan-400">
-Marketplace
-</a>
-
-</nav>
-
-</div>
-
+  <div id="mobileMenu" class="mobile-menu hidden" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#gallery">Gallery</a>
+    <a href="marketplace.html">Store</a>
+    <a href="index.html#order">Order Online</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
 </header>
 
 <!-- HERO -->
+<section class="market-hero">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Tech Marketplace</span>
+      <h1 class="section-title">
+        Computer Accessories
+        <span class="gradient-text">At Affordable Prices</span>
+      </h1>
+      <p class="section-desc mx-auto">
+        Buy genuine computer accessories and gadgets directly from our shop.
+      </p>
+    </div>
 
-<section class="pt-36 pb-20">
-
-<div class="max-w-7xl mx-auto px-6 text-center">
-
-<span class="inline-block px-4 py-2 rounded-full glass text-cyan-300">
-
-TECH MARKETPLACE
-
-</span>
-
-<h1 class="text-5xl md:text-7xl font-extrabold mt-8">
-
-Computer Accessories
-
-<span class="gradient-text block">
-At Affordable Prices
-</span>
-
-</h1>
-
-<p class="max-w-3xl mx-auto mt-6 text-slate-400 text-lg">
-
-Buy genuine computer accessories and gadgets
-directly from our shop.
-
-</p>
-
-<div class="mt-10 glass rounded-3xl p-6 max-w-4xl mx-auto">
-
-<h3 class="text-2xl font-bold text-yellow-400">
-
-⚠ Available In Store Only
-
-</h3>
-
-<p class="mt-4 text-slate-300">
-
-Products are available for purchase only at our store.
-
-We currently do not provide home delivery services.
-
-Please visit our shop to buy accessories.
-
-</p>
-
-</div>
-
-</div>
-
+    <div class="market-notice glass">
+      <h3>⚠ Available In Store Only</h3>
+      <p>
+        Products are available for purchase only at our store.
+        We currently do not provide home delivery services.
+        Please visit our shop to buy accessories.
+      </p>
+    </div>
+  </div>
 </section>
 
 <!-- SEARCH -->
-
-<section class="pb-16">
-
-<div class="max-w-4xl mx-auto px-6">
-
-<input
-type="text"
-placeholder="Search Accessories..."
-class="w-full p-5 rounded-2xl bg-slate-900 border border-slate-700 outline-none"
->
-
-</div>
-
+<section class="section" style="padding-top: 0; padding-bottom: 2rem;">
+  <div class="container">
+    <div class="search-wrap">
+      <input type="text" placeholder="Search accessories..." class="search-input" id="searchInput">
+    </div>
+  </div>
 </section>
-<!-- ===================== -->
+
 <!-- CATEGORY FILTERS -->
-<!-- ===================== -->
-
-<section class="pb-12">
-
-<div class="max-w-7xl mx-auto px-6">
-
-<div class="flex flex-wrap justify-center gap-4">
-
-<button class="px-6 py-3 rounded-2xl bg-cyan-500 font-semibold">
-All Products
-</button>
-
-<button class="px-6 py-3 rounded-2xl glass">
-Mouse
-</button>
-
-<button class="px-6 py-3 rounded-2xl glass">
-Keyboard
-</button>
-
-<button class="px-6 py-3 rounded-2xl glass">
-Storage
-</button>
-
-<button class="px-6 py-3 rounded-2xl glass">
-Networking
-</button>
-
-<button class="px-6 py-3 rounded-2xl glass">
-Security
-</button>
-
-<button class="px-6 py-3 rounded-2xl glass">
-Accessories
-</button>
-
-</div>
-
-</div>
-
+<section style="padding-bottom: 2rem;">
+  <div class="container">
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All Products</button>
+      <button class="filter-btn" data-filter="mouse">Mouse</button>
+      <button class="filter-btn" data-filter="keyboard">Keyboard</button>
+      <button class="filter-btn" data-filter="storage">Storage</button>
+      <button class="filter-btn" data-filter="networking">Networking</button>
+      <button class="filter-btn" data-filter="security">Security</button>
+      <button class="filter-btn" data-filter="accessories">Accessories</button>
+    </div>
+  </div>
 </section>
 
-<!-- ===================== -->
 <!-- PRODUCTS -->
-<!-- ===================== -->
-
-<section class="pb-24">
-
-<div class="max-w-7xl mx-auto px-6">
-
-<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-<!-- PRODUCT 1 -->
-
-<div class="glass rounded-3xl overflow-hidden product-card">
-
-<img
-src="images/mouse.jpg"
-class="h-60 w-full object-cover"
-alt="Mouse">
-
-<div class="p-6">
-
-<span class="text-xs bg-cyan-500 px-3 py-1 rounded-full">
-Best Seller
-</span>
-
-<h3 class="text-xl font-bold mt-4">
-Wireless Mouse
-</h3>
-
-<p class="text-slate-400 mt-2">
-Smooth performance and ergonomic design.
-</p>
-
-<div class="mt-5 flex justify-between items-center">
-
-<span class="text-cyan-400 text-2xl font-bold">
-₹349
-</span>
-
-<span class="text-sm text-green-400">
-In Store
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- PRODUCT 2 -->
-
-<div class="glass rounded-3xl overflow-hidden product-card">
-
-<img
-src="images/keyboard.jpg"
-class="h-60 w-full object-cover"
-alt="Keyboard">
-
-<div class="p-6">
-
-<span class="text-xs bg-blue-500 px-3 py-1 rounded-full">
-Trending
-</span>
-
-<h3 class="text-xl font-bold mt-4">
-Gaming Keyboard
-</h3>
-
-<p class="text-slate-400 mt-2">
-Premium keys with stylish RGB design.
-</p>
-
-<div class="mt-5 flex justify-between items-center">
-
-<span class="text-cyan-400 text-2xl font-bold">
-₹799
-</span>
-
-<span class="text-sm text-green-400">
-In Store
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- PRODUCT 3 -->
-
-<div class="glass rounded-3xl overflow-hidden product-card">
-
-<img
-src="images/pendrive.jpg"
-class="h-60 w-full object-cover"
-alt="Pendrive">
-
-<div class="p-6">
-
-<span class="text-xs bg-purple-500 px-3 py-1 rounded-full">
-Popular
-</span>
-
-<h3 class="text-xl font-bold mt-4">
-64GB Pen Drive
-</h3>
-
-<p class="text-slate-400 mt-2">
-High speed USB storage solution.
-</p>
-
-<div class="mt-5 flex justify-between items-center">
-
-<span class="text-cyan-400 text-2xl font-bold">
-₹599
-</span>
-
-<span class="text-sm text-green-400">
-In Store
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- PRODUCT 4 -->
-
-<div class="glass rounded-3xl overflow-hidden product-card">
-
-<img
-src="images/headphone.jpg"
-class="h-60 w-full object-cover"
-alt="Headphone">
-
-<div class="p-6">
-
-<span class="text-xs bg-green-500 px-3 py-1 rounded-full">
-Premium
-</span>
-
-<h3 class="text-xl font-bold mt-4">
-HD Headphones
-</h3>
-
-<p class="text-slate-400 mt-2">
-Deep bass and crystal clear sound.
-</p>
-
-<div class="mt-5 flex justify-between items-center">
-
-<span class="text-cyan-400 text-2xl font-bold">
-₹999
-</span>
-
-<span class="text-sm text-green-400">
-In Store
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- PRODUCT 5 -->
-
-<div class="glass rounded-3xl overflow-hidden product-card">
-
-<img
-src="images/webcam.jpg"
-class="h-60 w-full object-cover"
-alt="Webcam">
-
-<div class="p-6">
-
-<span class="text-xs bg-red-500 px-3 py-1 rounded-full">
-HD Quality
-</span>
-
-<h3 class="text-xl font-bold mt-4">
-HD Webcam
-</h3>
-
-<p class="text-slate-400 mt-2">
-Perfect for meetings and classes.
-</p>
-
-<div class="mt-5 flex justify-between items-center">
-
-<span class="text-cyan-400 text-2xl font-bold">
-₹899
-</span>
-
-<span class="text-sm text-green-400">
-In Store
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- PRODUCT 6 -->
-
-<div class="glass rounded-3xl overflow-hidden product-card">
-
-<img
-src="images/SSD.jpg"
-class="h-60 w-full object-cover"
-alt="SSD">
-
-<div class="p-6">
-
-<span class="text-xs bg-cyan-500 px-3 py-1 rounded-full">
-Fast Speed
-</span>
-
-<h3 class="text-xl font-bold mt-4">
-SSD Drive
-</h3>
-
-<p class="text-slate-400 mt-2">
-Boost your computer performance.
-</p>
-
-<div class="mt-5 flex justify-between items-center">
-
-<span class="text-cyan-400 text-2xl font-bold">
-₹2499
-</span>
-
-<span class="text-sm text-green-400">
-In Store
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- PRODUCT 7 -->
-
-<div class="glass rounded-3xl overflow-hidden product-card">
-
-<img
-src="images/computer ram.jpg"
-class="h-60 w-full object-cover"
-alt="RAM">
-
-<div class="p-6">
-
-<span class="text-xs bg-yellow-500 px-3 py-1 rounded-full">
-Upgrade
-</span>
-
-<h3 class="text-xl font-bold mt-4">
-Computer RAM
-</h3>
-
-<p class="text-slate-400 mt-2">
-Increase speed and multitasking.
-</p>
-
-<div class="mt-5 flex justify-between items-center">
-
-<span class="text-cyan-400 text-2xl font-bold">
-₹1599
-</span>
-
-<span class="text-sm text-green-400">
-In Store
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- PRODUCT 8 -->
-
-<div class="glass rounded-3xl overflow-hidden product-card">
-
-<img
-src="images/cctv camera.jpg"
-class="h-60 w-full object-cover"
-alt="CCTV">
-
-<div class="p-6">
-
-<span class="text-xs bg-orange-500 px-3 py-1 rounded-full">
-Security
-</span>
-
-<h3 class="text-xl font-bold mt-4">
-CCTV Camera
-</h3>
-
-<p class="text-slate-400 mt-2">
-HD surveillance and monitoring.
-</p>
-
-<div class="mt-5 flex justify-between items-center">
-
-<span class="text-cyan-400 text-2xl font-bold">
-₹1499
-</span>
-
-<span class="text-sm text-green-400">
-In Store
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+<section class="section section-alt" style="padding-top: 2rem;">
+  <div class="container">
+    <div class="products-grid" id="productsGrid">
+
+      <article class="product-card glass card-hover" data-category="mouse" data-name="wireless mouse">
+        <img src="images/mouse.jpg" class="product-img" alt="Mouse">
+        <div class="product-body">
+          <span class="product-badge badge-primary">Best Seller</span>
+          <h3>Wireless Mouse</h3>
+          <p>Smooth performance and ergonomic design.</p>
+          <div class="product-footer">
+            <span class="product-price">₹349</span>
+            <span class="in-store-badge">In Store</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card glass card-hover" data-category="keyboard" data-name="gaming keyboard">
+        <img src="images/keyboard.jpg" class="product-img" alt="Keyboard">
+        <div class="product-body">
+          <span class="product-badge badge-purple">Trending</span>
+          <h3>Gaming Keyboard</h3>
+          <p>Premium keys with stylish RGB design.</p>
+          <div class="product-footer">
+            <span class="product-price">₹799</span>
+            <span class="in-store-badge">In Store</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card glass card-hover" data-category="storage" data-name="64gb pen drive">
+        <img src="images/pendrive.jpg" class="product-img" alt="Pendrive">
+        <div class="product-body">
+          <span class="product-badge badge-purple">Popular</span>
+          <h3>64GB Pen Drive</h3>
+          <p>High speed USB storage solution.</p>
+          <div class="product-footer">
+            <span class="product-price">₹599</span>
+            <span class="in-store-badge">In Store</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card glass card-hover" data-category="accessories" data-name="hd headphones">
+        <img src="images/headphone.jpg" class="product-img" alt="Headphone">
+        <div class="product-body">
+          <span class="product-badge badge-green">Premium</span>
+          <h3>HD Headphones</h3>
+          <p>Deep bass and crystal clear sound.</p>
+          <div class="product-footer">
+            <span class="product-price">₹999</span>
+            <span class="in-store-badge">In Store</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card glass card-hover" data-category="accessories" data-name="hd webcam">
+        <img src="images/webcam.jpg" class="product-img" alt="Webcam">
+        <div class="product-body">
+          <span class="product-badge badge-accent">HD Quality</span>
+          <h3>HD Webcam</h3>
+          <p>Perfect for meetings and classes.</p>
+          <div class="product-footer">
+            <span class="product-price">₹899</span>
+            <span class="in-store-badge">In Store</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card glass card-hover" data-category="storage" data-name="ssd drive">
+        <img src="images/SSD.jpg" class="product-img" alt="SSD">
+        <div class="product-body">
+          <span class="product-badge badge-primary">Fast Speed</span>
+          <h3>SSD Drive</h3>
+          <p>Boost your computer performance.</p>
+          <div class="product-footer">
+            <span class="product-price">₹2499</span>
+            <span class="in-store-badge">In Store</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card glass card-hover" data-category="storage" data-name="computer ram">
+        <img src="images/computer ram.jpg" class="product-img" alt="RAM">
+        <div class="product-body">
+          <span class="product-badge" style="background:#ca8a04;color:#fff;">Upgrade</span>
+          <h3>Computer RAM</h3>
+          <p>Increase speed and multitasking.</p>
+          <div class="product-footer">
+            <span class="product-price">₹1599</span>
+            <span class="in-store-badge">In Store</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card glass card-hover" data-category="security" data-name="cctv camera">
+        <img src="images/cctv camera.jpg" class="product-img" alt="CCTV">
+        <div class="product-body">
+          <span class="product-badge badge-accent">Security</span>
+          <h3>CCTV Camera</h3>
+          <p>HD surveillance and monitoring.</p>
+          <div class="product-footer">
+            <span class="product-price">₹1499</span>
+            <span class="in-store-badge">In Store</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
 </section>
-<!-- ===================== -->
+
 <!-- MORE ACCESSORIES -->
-<!-- ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        More Accessories
+        <span class="gradient-text">Available In Store</span>
+      </h2>
+    </div>
 
-<section class="pb-24">
+    <div class="products-grid" id="miniProductsGrid">
 
-<div class="max-w-7xl mx-auto px-6">
+      <article class="mini-product-card glass card-hover" data-name="wifi router">
+        <h3>WiFi Router</h3>
+        <p>High speed wireless router.</p>
+        <p class="product-price">₹1299</p>
+      </article>
 
-<h2 class="text-4xl font-bold text-center mb-12">
+      <article class="mini-product-card glass card-hover" data-name="lan cable">
+        <h3>LAN Cable</h3>
+        <p>Reliable networking cable.</p>
+        <p class="product-price">₹199</p>
+      </article>
 
-More Accessories
+      <article class="mini-product-card glass card-hover" data-name="hdmi cable">
+        <h3>HDMI Cable</h3>
+        <p>Full HD video support.</p>
+        <p class="product-price">₹249</p>
+      </article>
 
-<span class="gradient-text">
-Available In Store
-</span>
+      <article class="mini-product-card glass card-hover" data-name="usb hub">
+        <h3>USB Hub</h3>
+        <p>Multiple USB ports.</p>
+        <p class="product-price">₹399</p>
+      </article>
 
-</h2>
+      <article class="mini-product-card glass card-hover" data-name="bluetooth speaker">
+        <h3>Bluetooth Speaker</h3>
+        <p>Portable crystal-clear sound.</p>
+        <p class="product-price">₹699</p>
+      </article>
 
-<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <article class="mini-product-card glass card-hover" data-name="laptop cooling pad">
+        <h3>Laptop Cooling Pad</h3>
+        <p>Keep laptops cool.</p>
+        <p class="product-price">₹599</p>
+      </article>
 
-<!-- ITEM -->
+      <article class="mini-product-card glass card-hover" data-name="card reader">
+        <h3>Card Reader</h3>
+        <p>Fast memory card access.</p>
+        <p class="product-price">₹199</p>
+      </article>
 
-<div class="glass p-6 rounded-3xl product-card">
-<h3 class="text-xl font-bold">WiFi Router</h3>
-<p class="text-slate-400 mt-2">High speed wireless router.</p>
-<p class="text-cyan-400 text-2xl font-bold mt-4">₹1299</p>
-</div>
+      <article class="mini-product-card glass card-hover" data-name="wifi adapter">
+        <h3>WiFi Adapter</h3>
+        <p>USB wireless connectivity.</p>
+        <p class="product-price">₹499</p>
+      </article>
 
-<div class="glass p-6 rounded-3xl product-card">
-<h3 class="text-xl font-bold">LAN Cable</h3>
-<p class="text-slate-400 mt-2">Reliable networking cable.</p>
-<p class="text-cyan-400 text-2xl font-bold mt-4">₹199</p>
-</div>
+      <article class="mini-product-card glass card-hover" data-name="power bank">
+        <h3>Power Bank</h3>
+        <p>Fast charging backup.</p>
+        <p class="product-price">₹899</p>
+      </article>
 
-<div class="glass p-6 rounded-3xl product-card">
-<h3 class="text-xl font-bold">HDMI Cable</h3>
-<p class="text-slate-400 mt-2">Full HD video support.</p>
-<p class="text-cyan-400 text-2xl font-bold mt-4">₹249</p>
-</div>
+      <article class="mini-product-card glass card-hover" data-name="printer ink">
+        <h3>Printer Ink</h3>
+        <p>Quality printing supplies.</p>
+        <p class="product-price">₹299</p>
+      </article>
 
-<div class="glass p-6 rounded-3xl product-card">
-<h3 class="text-xl font-bold">USB Hub</h3>
-<p class="text-slate-400 mt-2">Multiple USB ports.</p>
-<p class="text-cyan-400 text-2xl font-bold mt-4">₹399</p>
-</div>
+      <article class="mini-product-card glass card-hover" data-name="smps">
+        <h3>SMPS</h3>
+        <p>Reliable power supply unit.</p>
+        <p class="product-price">₹999</p>
+      </article>
 
-<div class="glass p-6 rounded-3xl product-card">
-<h3 class="text-xl font-bold">Bluetooth Speaker</h3>
-<p class="text-slate-400 mt-2">Portable crystal-clear sound.</p>
-<p class="text-cyan-400 text-2xl font-bold mt-4">₹699</p>
-</div>
+      <article class="mini-product-card glass card-hover" data-name="computer cabinet">
+        <h3>Computer Cabinet</h3>
+        <p>Durable and stylish design.</p>
+        <p class="product-price">₹1799</p>
+      </article>
 
-<div class="glass p-6 rounded-3xl product-card">
-<h3 class="text-xl font-bold">Laptop Cooling Pad</h3>
-<p class="text-slate-400 mt-2">Keep laptops cool.</p>
-<p class="text-cyan-400 text-2xl font-bold mt-4">₹599</p>
-</div>
-
-<div class="glass p-6 rounded-3xl product-card">
-<h3 class="text-xl font-bold">Card Reader</h3>
-<p class="text-slate-400 mt-2">Fast memory card access.</p>
-<p class="text-cyan-400 text-2xl font-bold mt-4">₹199</p>
-</div>
-
-<div class="glass p-6 rounded-3xl product-card">
-<h3 class="text-xl font-bold">WiFi Adapter</h3>
-<p class="text-slate-400 mt-2">USB wireless connectivity.</p>
-<p class="text-cyan-400 text-2xl font-bold mt-4">₹499</p>
-</div>
-
-<div class="glass p-6 rounded-3xl product-card">
-<h3 class="text-xl font-bold">Power Bank</h3>
-<p class="text-slate-400 mt-2">Fast charging backup.</p>
-<p class="text-cyan-400 text-2xl font-bold mt-4">₹899</p>
-</div>
-
-<div class="glass p-6 rounded-3xl product-card">
-<h3 class="text-xl font-bold">Printer Ink</h3>
-<p class="text-slate-400 mt-2">Quality printing supplies.</p>
-<p class="text-cyan-400 text-2xl font-bold mt-4">₹299</p>
-</div>
-
-<div class="glass p-6 rounded-3xl product-card">
-<h3 class="text-xl font-bold">SMPS</h3>
-<p class="text-slate-400 mt-2">Reliable power supply unit.</p>
-<p class="text-cyan-400 text-2xl font-bold mt-4">₹999</p>
-</div>
-
-<div class="glass p-6 rounded-3xl product-card">
-<h3 class="text-xl font-bold">Computer Cabinet</h3>
-<p class="text-slate-400 mt-2">Durable and stylish design.</p>
-<p class="text-cyan-400 text-2xl font-bold mt-4">₹1799</p>
-</div>
-
-</div>
-
-</div>
-
+    </div>
+  </div>
 </section>
 
-<!-- ===================== -->
 <!-- STORE NOTICE -->
-<!-- ===================== -->
-
-<section class="pb-24">
-
-<div class="max-w-5xl mx-auto px-6">
-
-<div class="glass rounded-[35px] p-10 text-center">
-
-<div class="text-6xl mb-6">
-🏪
-</div>
-
-<h2 class="text-4xl font-bold">
-
-Purchase Directly From Our Store
-
-</h2>
-
-<p class="text-slate-400 text-lg mt-6 leading-relaxed">
-
-All accessories listed on this page are available
-at our physical store.
-
-We currently do not offer online ordering
-or home delivery services.
-
-Please visit our shop to purchase products.
-
-</p>
-
-<div class="mt-8">
-
-<p class="text-cyan-400 font-bold text-xl">
-
-📍 Chhutmalpur, Saharanpur, Uttar Pradesh
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
+<section class="section section-alt">
+  <div class="container">
+    <div class="store-banner glass">
+      <div class="store-banner-icon">🏪</div>
+      <h2>Purchase Directly From Our Store</h2>
+      <p>
+        All accessories listed on this page are available at our physical store.
+        We currently do not offer online ordering or home delivery services.
+        Please visit our shop to purchase products.
+      </p>
+      <p class="location">📍 Chhutmalpur, Saharanpur, Uttar Pradesh</p>
+    </div>
+  </div>
 </section>
 
-<!-- ===================== -->
 <!-- CONTACT CTA -->
-<!-- ===================== -->
-
-<section class="pb-24">
-
-<div class="max-w-6xl mx-auto px-6">
-
-<div class="glass rounded-[35px] p-12 text-center">
-
-<h2 class="text-5xl font-extrabold">
-
-Need Help?
-
-<span class="gradient-text">
-Contact Us
-</span>
-
-</h2>
-
-<p class="text-slate-400 mt-5">
-
-For product availability and latest prices,
-contact us directly.
-
-</p>
-
-<div class="flex flex-wrap justify-center gap-5 mt-10">
-
-<a
-href="tel:+918445662223"
-class="bg-cyan-500 hover:bg-cyan-400 px-8 py-4 rounded-2xl font-bold"
->
-
-📞 Call Now
-
-</a>
-
-<a
-href="https://wa.me/918445662223"
-target="_blank"
-class="bg-green-500 hover:bg-green-400 px-8 py-4 rounded-2xl font-bold"
->
-
-WhatsApp
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
+<section class="section">
+  <div class="container">
+    <div class="cta-panel glass">
+      <h2>Need Help? <span class="gradient-text">Contact Us</span></h2>
+      <p>For product availability and latest prices, contact us directly.</p>
+      <div class="cta-actions">
+        <a href="tel:+918445662223" class="btn btn-primary">📞 Call Now</a>
+        <a href="https://wa.me/918445662223" target="_blank" rel="noopener" class="btn btn-outline">WhatsApp</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ===================== -->
 <!-- FOOTER -->
-<!-- ===================== -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <h3>LOGIN <span class="brand-accent">COMPUTER</span></h3>
+      <p>Computer Accessories, Printing, Digital Services & Solutions.</p>
+    </div>
 
-<footer class="border-t border-slate-800">
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li>Printing</li>
+        <li>Binding</li>
+        <li>AEPS</li>
+        <li>Graphic Design</li>
+      </ul>
+    </div>
 
-<div class="max-w-7xl mx-auto px-6 py-12 text-center">
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+918445662223">+91-8445-662-223</a></li>
+        <li><a href="mailto:loginc9@gmail.com">loginc9@gmail.com</a></li>
+        <li>Chhutmalpur, Saharanpur, Uttar Pradesh</li>
+      </ul>
+    </div>
 
-<h3 class="text-3xl font-extrabold">
+    <div class="footer-col">
+      <h4>Working Hours</h4>
+      <ul>
+        <li>Mon – Sat</li>
+        <li>09:00 AM – 09:00 PM</li>
+      </ul>
+    </div>
+  </div>
 
-LOGIN
-
-<span class="text-cyan-400">
-COMPUTER
-</span>
-
-</h3>
-
-<p class="text-slate-400 mt-5">
-
-Computer Accessories, Printing,
-Digital Services & Solutions.
-
-</p>
-
-<div class="mt-6 text-slate-500">
-
-📞 +91 8445662223 <br>
-✉️ loginc9@gmail.com <br>
-📍 Chhutmalpur, Saharanpur, Uttar Pradesh
-
-</div>
-
-<div class="mt-8 text-slate-600">
-
-© 2026 Login Computer. All Rights Reserved.
-
-</div>
-
-</div>
-
+  <div class="footer-bottom">
+    <p>© <span id="year">2026</span> Login Computer. All Rights Reserved.</p>
+  </div>
 </footer>
 
-<!-- WHATSAPP FLOAT -->
-
-<a
-href="https://wa.me/918445662223"
-target="_blank"
-class="fixed bottom-6 right-6 bg-green-500 h-16 w-16 rounded-full flex items-center justify-center text-3xl shadow-2xl z-50 hover:scale-110 transition"
->
-
-<img src="images/icons8-whatsapp-48.png" class="h-8 w-8" alt="WhatsApp">
-
+<a href="https://wa.me/918445662223" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+  <img src="images/icons8-whatsapp-48.png" alt="WhatsApp">
 </a>
+
+<button id="backTop" class="back-top" aria-label="Back to top">↑</button>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("searchInput");
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const products = document.querySelectorAll("#productsGrid .product-card");
+  const miniProducts = document.querySelectorAll("#miniProductsGrid .mini-product-card");
+  let activeFilter = "all";
+
+  function applyFilters() {
+    const query = searchInput ? searchInput.value.toLowerCase().trim() : "";
+
+    products.forEach(card => {
+      const name = card.dataset.name || "";
+      const category = card.dataset.category || "";
+      const matchSearch = !query || name.includes(query);
+      const matchFilter = activeFilter === "all" || category === activeFilter;
+      card.style.display = matchSearch && matchFilter ? "" : "none";
+    });
+
+    miniProducts.forEach(card => {
+      const name = card.dataset.name || "";
+      const matchSearch = !query || name.includes(query);
+      card.style.display = matchSearch ? "" : "none";
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener("input", applyFilters);
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      activeFilter = btn.dataset.filter;
+      applyFilters();
+    });
+  });
+});
+</script>
 
 </body>
 </html>
