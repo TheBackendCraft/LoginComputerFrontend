@@ -555,3 +555,46 @@ if (slider && dots.length) {
     updateSlider();
   }, 4000);
 }
+
+// =========================
+// MOBILE MENU
+// =========================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    if (menuBtn && mobileMenu) {
+
+        menuBtn.addEventListener("click", () => {
+
+            mobileMenu.classList.toggle("hidden");
+            mobileMenu.classList.toggle("active");
+
+            // Icon Change
+            if (mobileMenu.classList.contains("hidden")) {
+                menuBtn.innerHTML = "☰";
+                menuBtn.setAttribute("aria-expanded", "false");
+            } else {
+                menuBtn.innerHTML = "✕";
+                menuBtn.setAttribute("aria-expanded", "true");
+            }
+
+        });
+
+        // Mobile Menu Close on Click
+        mobileMenu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+
+                mobileMenu.classList.add("hidden");
+                mobileMenu.classList.remove("active");
+                menuBtn.innerHTML = "☰";
+                menuBtn.setAttribute("aria-expanded", "false");
+
+            });
+        });
+
+    }
+
+});
