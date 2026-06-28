@@ -17,15 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const expanded = menuBtn.getAttribute("aria-expanded") === "true";
             menuBtn.setAttribute("aria-expanded", !expanded);
             mobileMenu.classList.toggle("hidden");
-        });
 
     mobileMenu.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
         mobileMenu.classList.add("hidden");
         menuBtn.setAttribute("aria-expanded", "false");
       });
-    });
-  }
 
   // ==========================
   // HERO SLIDER
