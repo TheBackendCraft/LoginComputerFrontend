@@ -596,5 +596,40 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     }
+   document.addEventListener("DOMContentLoaded", function () {
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    if(menuBtn && mobileMenu){
+
+        menuBtn.addEventListener("click", function(){
+
+            mobileMenu.classList.toggle("active");
+
+            if(mobileMenu.classList.contains("active")){
+                menuBtn.innerHTML = "✕";
+            }else{
+                menuBtn.innerHTML = "☰";
+            }
+
+        });
+
+        const links = mobileMenu.querySelectorAll("a");
+
+        links.forEach(function(link){
+
+            link.addEventListener("click", function(){
+
+                mobileMenu.classList.remove("active");
+                menuBtn.innerHTML="☰";
+
+            });
+
+        });
+
+    }
+
+});
 
 });
