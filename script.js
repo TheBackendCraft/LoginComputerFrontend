@@ -11,41 +11,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.getElementById("menuBtn");
   const mobileMenu = document.getElementById("mobileMenu");
 
-  // टेस्ट करने के लिए कि एलिमेंट्स मिल रहे हैं या नहीं
-  console.log("Button found:", menuBtn);
-  console.log("Menu found:", mobileMenu);
-
-  if (menuBtn && mobileMenu) {
-    
-    // मेनू खोलने और बंद करने का फंक्शन
-    function toggleMenu(e) {
-        e.preventDefault(); // डिफ़ॉल्ट मोबाइल बिहेवियर को रोकने के लिए
-        console.log("Hamburger clicked!"); // कंप्यूटर/मोबाइल पर F12 दबाकर चेक करें कि यह दिख रहा है या नहीं
-        
-        const expanded = menuBtn.getAttribute("aria-expanded") === "true";
-        menuBtn.setAttribute("aria-expanded", !expanded);
-        mobileMenu.classList.toggle("hidden");
+if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("hidden");
+      menuBtn.setAttribute("aria-expanded", String(!isOpen));
+    });
+ // Toggle Navigation Context
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener("click", () => {
+            const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+            menuBtn.setAttribute("aria-expanded", !expanded);
+            mobileMenu.classList.toggle("hidden");
+        });
     }
 
-    // मोबाइल टच और नॉर्मल क्लिक दोनों के लिए इवेंट्स
-    menuBtn.addEventListener("click", toggleMenu);
-    menuBtn.addEventListener("touchstart", toggleMenu, { passive: false });
-
-    // लिंक्स पर क्लिक करने पर मेनू बंद करने के लिए
     mobileMenu.querySelectorAll("a").forEach(link => {
-        const closeMenu = () => {
-            mobileMenu.classList.add("hidden");
-            menuBtn.setAttribute("aria-expanded", "false");
-        };
-        link.addEventListener("click", closeMenu);
-        link.addEventListener("touchstart", closeMenu);
-    }); 
-  } else {
-    console.error("Error: menuBtn or mobileMenu not found in HTML!");
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
   }
-
-});
-
 
 
   // ==========================
