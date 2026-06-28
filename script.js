@@ -20,14 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    mobileMenu.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
-        menuBtn.setAttribute("aria-expanded", "false");
-      });
-    });
-  }
-
   // ==========================
   // HERO SLIDER
   // ==========================
