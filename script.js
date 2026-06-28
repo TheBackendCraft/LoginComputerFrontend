@@ -11,11 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.getElementById("menuBtn");
   const mobileMenu = document.getElementById("mobileMenu");
 
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener("click", () => {
-      const isOpen = mobileMenu.classList.toggle("hidden");
-      menuBtn.setAttribute("aria-expanded", String(!isOpen));
-    });
+ // Toggle Navigation Context
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener("click", () => {
+            const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+            menuBtn.setAttribute("aria-expanded", !expanded);
+            mobileMenu.classList.toggle("hidden");
+        });
+    }
 
     mobileMenu.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
