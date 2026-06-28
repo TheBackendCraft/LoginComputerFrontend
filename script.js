@@ -1,153 +1,83 @@
+/* =========================================
+   LOGIN COMPUTER
+   SCRIPT.JS
+   PART 1
+========================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
-// popup on website loading
-window.onload = function() {
-    setTimeout(function() {
-        var popup = document.getElementById('welcomePopup');
-        if (popup) {
-            popup.classList.add('show');
-        }
-    }, 1000); // 1 सेकंड का डिले
-};
-    
-    var closeBtn = document.getElementById('popupCloseBtn');
-    if (closeBtn) {
-        closeBtn.addEventListener('click', function(event) {
-            event.stopPropagation(); ा
-            closePopup();
-        });
-    }
+// ==========================
+// MOBILE MENU
+// ==========================
 
-    // click anywhere on the screen
-    var popup = document.getElementById('welcomePopup');
-    if (popup) {
-        popup.addEventListener('click', function(event) {
-            if (event.target === popup) {
-                closePopup();
-            }
-        });
-    }
-};
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
 
-// पॉपअप बंद करने का कॉमन फंक्शन
-function closePopup() {
-    var popup = document.getElementById('welcomePopup');
-    if (popup) {
-        popup.classList.remove('show');
-    }
-}
-
-    
-    /* =========================
-       MOBILE MENU
-    ========================= */
-
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
-
-    if (menuBtn && mobileMenu) {
-
-        menuBtn.addEventListener("click", () => {
-
-            mobileMenu.classList.toggle("hidden");
-
-            if (menuBtn.innerHTML.trim() === "☰") {
-                menuBtn.innerHTML = "✕";
-            } else {
-                menuBtn.innerHTML = "☰";
-            }
-
-        });
-
-    }
-
-    /* =========================
-       HERO SLIDER
-    ========================= */
-
-    const slider = document.getElementById("heroSlider");
-    const dots = document.querySelectorAll(".dot");
-
-    if (slider && dots.length > 0) {
-
-        let currentSlide = 0;
-
-        const totalSlides = slider.children.length;
-
-        function showSlide(index) {
-
-            slider.style.transform =
-                `translateX(-${index * 100}%)`;
-
-            dots.forEach(dot => {
-                dot.classList.remove("bg-cyan-400");
-                dot.classList.add("bg-slate-600");
-            });
-
-            if (dots[index]) {
-                dots[index].classList.remove("bg-slate-600");
-                dots[index].classList.add("bg-cyan-400");
-            }
-        }
-
-        dots.forEach((dot, index) => {
-
-            dot.addEventListener("click", () => {
-
-                currentSlide = index;
-                showSlide(currentSlide);
-
-            });
-
-        });
-
-        setInterval(() => {
-
-            currentSlide++;
-
-            if (currentSlide >= totalSlides) {
-                currentSlide = 0;
-            }
-
-            showSlide(currentSlide);
-
-        }, 5000);
-
-    }
-
-});
-
-const menuBtn = document.querySelector("header button");
-const nav = document.querySelector("nav");
-
-if(menuBtn){
+if(menuBtn && mobileMenu){
 
 menuBtn.addEventListener("click",()=>{
 
-nav.classList.toggle("hidden");
+mobileMenu.classList.toggle("hidden");
 
-if(!nav.classList.contains("mobile-active")){
+});
 
-nav.classList.add(
-"mobile-active",
-"absolute",
-"top-20",
-"left-4",
-"right-4",
-"bg-slate-900",
-"p-6",
-"rounded-2xl",
-"flex",
-"flex-col",
-"gap-5",
-"shadow-2xl"
-);
+}
+
+// ==========================
+// HERO SLIDER
+// ==========================
+
+const slider=document.getElementById("heroSlider");
+const dots=document.querySelectorAll(".dot");
+
+let currentSlide=0;
+
+const totalSlides=3;
+
+function updateSlider(){
+
+if(!slider) return;
+
+slider.style.transform=
+`translateX(-${currentSlide*100}%)`;
+
+dots.forEach((dot,index)=>{
+
+dot.classList.remove("active");
+
+if(index===currentSlide){
+
+dot.classList.add("active");
 
 }
 
 });
 
 }
+
+dots.forEach((dot,index)=>{
+
+dot.addEventListener("click",()=>{
+
+currentSlide=index;
+
+updateSlider();
+
+});
+
+});
+
+setInterval(()=>{
+
+currentSlide++;
+
+if(currentSlide>=totalSlides){
+
+currentSlide=0;
+
+}
+
+updateSlider();
+
+},4000);
 
 // ==========================
 // SMOOTH SCROLL
@@ -159,179 +89,200 @@ link.addEventListener("click",(e)=>{
 
 e.preventDefault();
 
-const target=document.querySelector(
-link.getAttribute("href")
-);
+const target=document.querySelector(link.getAttribute("href"));
 
 if(target){
 
 target.scrollIntoView({
+
 behavior:"smooth"
+
 });
+
+}
+
+if(mobileMenu){
+
+mobileMenu.classList.add("hidden");
 
 }
 
 });
 
 });
+/* =========================================
+   PART 2
+   COUNTER + SCROLL + NAVBAR
+========================================= */
 
 // ==========================
 // COUNTER ANIMATION
 // ==========================
 
-const counters = document.querySelectorAll("h2");
+const counters=document.querySelectorAll(".counter");
 
-const startCounter = () => {
+const counterObserver=new IntersectionObserver((entries)=>{
 
-counters.forEach(counter => {
+entries.forEach(entry=>{
 
-const text = counter.innerText;
+if(!entry.isIntersecting) return;
 
-const number = parseInt(text);
+const counter=entry.target;
 
-if(isNaN(number)) return;
+const target=+counter.getAttribute("data-target");
 
-let current = 0;
+let count=0;
 
-const increment = Math.ceil(number / 80);
+const speed=Math.ceil(target/100);
 
-const update = () => {
+function updateCounter(){
 
-current += increment;
+count+=speed;
 
-if(current >= number){
+if(count>=target){
 
-counter.innerText = text;
-return;
+counter.innerText=target+"+";
+
+}else{
+
+counter.innerText=count+"+";
+
+requestAnimationFrame(updateCounter);
+
 }
 
-counter.innerText = current + "+";
+}
 
-requestAnimationFrame(update);
+updateCounter();
 
-};
-
-update();
+counterObserver.unobserve(counter);
 
 });
 
-};
+});
 
-const observer = new IntersectionObserver(entries=>{
+counters.forEach(counter=>{
+
+counterObserver.observe(counter);
+
+});
+
+// ==========================
+// SCROLL REVEAL
+// ==========================
+
+const revealElements=document.querySelectorAll(
+
+".glass,.card-hover,.thesis-card,.service-card,.product-card,.review-card"
+
+);
+
+const revealObserver=new IntersectionObserver((entries)=>{
 
 entries.forEach(entry=>{
 
 if(entry.isIntersecting){
 
-startCounter();
+entry.target.style.opacity="1";
 
-observer.disconnect();
+entry.target.style.transform="translateY(0)";
 
 }
 
 });
 
+},{
+threshold:.15
 });
 
-const statsSection=document.querySelector("section.bg-slate-900");
+revealElements.forEach(el=>{
 
-if(statsSection){
+el.style.opacity="0";
 
-observer.observe(statsSection);
+el.style.transform="translateY(40px)";
 
-}
+el.style.transition="all .7s ease";
+
+revealObserver.observe(el);
+
+});
 
 // ==========================
-// FAQ ACCORDION
+// NAVBAR SCROLL EFFECT
 // ==========================
 
-const faqItems = document.querySelectorAll(".glass");
+const header=document.querySelector("header");
 
-faqItems.forEach(item=>{
+window.addEventListener("scroll",()=>{
 
-const p = item.querySelector("p");
+if(window.scrollY>40){
 
-const h3 = item.querySelector("h3");
-
-if(!p || !h3) return;
-
-if(
-h3.parentElement.parentElement.classList.contains("space-y-5")
-){
-
-p.style.display="none";
-
-h3.style.cursor="pointer";
-
-h3.addEventListener("click",()=>{
-
-if(p.style.display==="none"){
-
-p.style.display="block";
+header.style.background="rgba(255,255,255,.95)";
+header.style.boxShadow="0 10px 30px rgba(0,0,0,.08)";
 
 }else{
 
-p.style.display="none";
+header.style.background="rgba(255,255,255,.85)";
+header.style.boxShadow="none";
 
 }
 
 });
 
+// ==========================
+// ACTIVE MENU LINK
+// ==========================
+
+const sections=document.querySelectorAll("section");
+const navLinks=document.querySelectorAll("nav a");
+
+window.addEventListener("scroll",()=>{
+
+let current="";
+
+sections.forEach(section=>{
+
+const top=section.offsetTop-120;
+
+if(pageYOffset>=top){
+
+current=section.getAttribute("id");
+
 }
 
 });
 
-// ==========================
-// ORDER FORM
-// ==========================
+navLinks.forEach(link=>{
 
-const form = document.querySelector("form");
+link.classList.remove("text-cyan-500");
 
-if(form){
+if(link.getAttribute("href")==="#"+current){
 
-form.addEventListener("submit",(e)=>{
+link.classList.add("text-cyan-500");
 
-e.preventDefault();
-
-showToast(
-"Order Submitted Successfully!"
-);
-
-form.reset();
+}
 
 });
 
-}
+});
+/* =========================================
+   PART 3
+   FLOATING BUTTONS + POPUP + TOAST
+========================================= */
 
 // ==========================
-// TRACK ORDER DEMO
+// FLOATING WHATSAPP BUTTON
 // ==========================
 
-const trackBtn = document.querySelector(
-'button[class*="bg-cyan-500"]'
-);
+const whatsappBtn=document.querySelector(".whatsapp-btn");
 
-if(trackBtn){
+if(whatsappBtn){
 
-trackBtn.addEventListener("click",()=>{
+whatsappBtn.addEventListener("click",()=>{
 
-const trackingInput =
-document.querySelector(
-'input[placeholder="LCN-1023"]'
-);
-
-if(!trackingInput) return;
-
-if(trackingInput.value===""){
-
-showToast("Enter Tracking ID");
-
-return;
-
-}
-
-showToast(
-"Order Found: Printing In Progress"
+window.open(
+"https://wa.me/918444566223",
+"_blank"
 );
 
 });
@@ -339,24 +290,68 @@ showToast(
 }
 
 // ==========================
-// TOAST NOTIFICATION
+// FLOATING LOCATION BUTTON
+// ==========================
+
+const locationBtn=document.querySelector(".location-btn");
+
+if(locationBtn){
+
+locationBtn.addEventListener("click",()=>{
+
+window.open(
+"https://maps.google.com/?q=Login+Computer+Opp+Milan+Garden+Near+AHP+Inter+College+Chhutmalpur",
+"_blank"
+);
+
+});
+
+}
+
+// ==========================
+// POPUP AUTO CLOSE
+// ==========================
+
+const popupToggle=document.getElementById("popupToggle");
+
+if(popupToggle){
+
+setTimeout(()=>{
+
+popupToggle.checked=false;
+
+},10000);
+
+}
+
+// ==========================
+// TOAST MESSAGE
 // ==========================
 
 function showToast(message){
 
 const toast=document.createElement("div");
 
-toast.innerText=message;
+toast.innerHTML=message;
 
-toast.className=
-"fixed top-6 right-6 bg-cyan-500 text-white px-6 py-4 rounded-xl shadow-xl z-50";
+toast.style.position="fixed";
+toast.style.bottom="30px";
+toast.style.left="50%";
+toast.style.transform="translateX(-50%)";
+toast.style.background="#06b6d4";
+toast.style.color="#fff";
+toast.style.padding="14px 24px";
+toast.style.borderRadius="12px";
+toast.style.fontWeight="600";
+toast.style.zIndex="99999";
+toast.style.boxShadow="0 15px 35px rgba(0,0,0,.20)";
 
 document.body.appendChild(toast);
 
 setTimeout(()=>{
 
 toast.style.opacity="0";
-toast.style.transition="0.4s";
+toast.style.transition=".4s";
 
 },2500);
 
@@ -369,83 +364,194 @@ toast.remove();
 }
 
 // ==========================
-// SCROLL REVEAL
+// IMAGE HOVER EFFECT
 // ==========================
 
-const revealElements =
-document.querySelectorAll(
-".glass,.card-hover"
-);
+document.querySelectorAll("img").forEach(img=>{
 
-const revealObserver =
-new IntersectionObserver(entries=>{
+img.addEventListener("mouseenter",()=>{
 
-entries.forEach(entry=>{
+img.style.transform="scale(1.03)";
 
-if(entry.isIntersecting){
+});
 
-entry.target.style.opacity="1";
+img.addEventListener("mouseleave",()=>{
 
-entry.target.style.transform=
-"translateY(0px)";
+img.style.transform="scale(1)";
+
+});
+
+});
+/* =========================================
+   PART 4 (FINAL)
+   LOADER + BACK TO TOP + YEAR + PARALLAX
+========================================= */
+
+// ==========================
+// PAGE LOADER
+// ==========================
+
+window.addEventListener("load",()=>{
+
+const loader=document.querySelector(".loader");
+
+if(loader){
+
+loader.style.opacity="0";
+
+setTimeout(()=>{
+
+loader.style.display="none";
+
+},500);
 
 }
 
 });
 
-},{
-threshold:0.15
-});
-
-revealElements.forEach(el=>{
-
-el.style.opacity="0";
-el.style.transform=
-"translateY(40px)";
-el.style.transition=
-"all .7s ease";
-
-revealObserver.observe(el);
-
-});
-
 // ==========================
-// HERO IMAGE FLOAT EFFECT
+// BACK TO TOP BUTTON
 // ==========================
 
-const heroImage=document.querySelector(
-".floating"
-);
+const backTop=document.getElementById("backTop");
 
-if(heroImage){
+if(backTop){
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>400){
+
+backTop.style.opacity="1";
+backTop.style.visibility="visible";
+
+}else{
+
+backTop.style.opacity="0";
+backTop.style.visibility="hidden";
+
+}
+
+});
+
+backTop.addEventListener("click",()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+});
+
+}
+
+// ==========================
+// CURRENT YEAR
+// ==========================
+
+const year=document.getElementById("year");
+
+if(year){
+
+year.textContent=new Date().getFullYear();
+
+}
+
+// ==========================
+// HERO PARALLAX
+// ==========================
+
+const hero=document.querySelector(".hero-bg");
+
+if(hero){
 
 window.addEventListener("mousemove",(e)=>{
 
-const x=(window.innerWidth/2-e.clientX)/40;
-const y=(window.innerHeight/2-e.clientY)/40;
+const x=(window.innerWidth/2-e.clientX)/70;
+const y=(window.innerHeight/2-e.clientY)/70;
 
-heroImage.style.transform=
-`translate(${x}px,${y}px)`;
+hero.style.backgroundPosition=`${x}px ${y}px`;
 
 });
 
 }
 
 // ==========================
-// CURRENT YEAR AUTO UPDATE
+// BUTTON RIPPLE EFFECT
 // ==========================
 
-const footerText =
-document.querySelector("footer");
+document.querySelectorAll("button,a.btn").forEach(btn=>{
 
-if(footerText){
+btn.addEventListener("click",function(e){
 
-const year=new Date().getFullYear();
+const ripple=document.createElement("span");
 
-footerText.innerHTML=
-footerText.innerHTML.replace(
-"2026",
-year
-);
+const rect=this.getBoundingClientRect();
 
+const size=Math.max(rect.width,rect.height);
+
+ripple.style.width=size+"px";
+ripple.style.height=size+"px";
+
+ripple.style.left=(e.clientX-rect.left-size/2)+"px";
+ripple.style.top=(e.clientY-rect.top-size/2)+"px";
+
+ripple.className="ripple";
+
+this.appendChild(ripple);
+
+setTimeout(()=>{
+
+ripple.remove();
+
+},600);
+
+});
+
+});
+
+// ==========================
+// PREVENT IMAGE DRAG
+// ==========================
+
+document.querySelectorAll("img").forEach(img=>{
+
+img.setAttribute("draggable","false");
+
+});
+
+// ==========================
+// CONSOLE MESSAGE
+// ==========================
+
+console.log("%cLogin Computer Website Loaded Successfully 🚀",
+"color:#06b6d4;font-size:16px;font-weight:bold;");
+
+// Hero slider
+const slider = document.getElementById("heroSlider");
+const dots = document.querySelectorAll(".dot");
+if (slider && dots.length) {
+  let currentSlide = 0;
+  const totalSlides = dots.length;
+  function updateSlider() {
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dots.forEach((dot) => {
+      dot.classList.remove("bg-apple-blue");
+      dot.classList.add("bg-apple-border");
+    });
+    dots[currentSlide].classList.remove("bg-apple-border");
+    dots[currentSlide].classList.add("bg-apple-blue");
+  }
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      currentSlide = index;
+      updateSlider();
+    });
+  });
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateSlider();
+  }, 4000);
 }
