@@ -2551,3 +2551,41 @@ RESPONSIVE
 }
 
 }
+
+/* ================= MOBILE MENU FIX ================= */
+
+.menu-btn{
+  position:relative;
+  z-index:9999;
+  cursor:pointer;
+  border:none;
+  outline:none;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.mobile-menu{
+  position:relative;
+  z-index:9998;
+}
+
+.mobile-menu.hidden{
+  display:none !important;
+}
+
+@media (max-width:768px){
+
+  .menu-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:46px;
+    height:46px;
+    font-size:26px;
+  }
+
+  .mobile-menu:not(.hidden){
+    display:flex !important;
+    flex-direction:column;
+  }
+
+}
