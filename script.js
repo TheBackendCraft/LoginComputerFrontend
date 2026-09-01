@@ -1,33 +1,69 @@
-/* =========================================
-   Login Computer — script.js
-   Hero slider · Mobile menu · Popup · UX
-   ========================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+/* ================= MOBILE MENU  ================= */
 
-  // ==========================
-  // MOBILE MENU
-  // ==========================
+document.addEventListener("DOMContentLoaded", function () {
+
   const menuBtn = document.getElementById("menuBtn");
   const mobileMenu = document.getElementById("mobileMenu");
 
+  if (!menuBtn || !mobileMenu) return;
 
- // Toggle Navigation Context
-    if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener("click", () => {
-            const expanded = menuBtn.getAttribute("aria-expanded") === "true";
-            menuBtn.setAttribute("aria-expanded", !expanded);
-            mobileMenu.classList.toggle("hidden");
-        });
+  menuBtn.addEventListener("click", function (e) {
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    mobileMenu.classList.toggle("hidden");
+
+    const isOpen = !mobileMenu.classList.contains("hidden");
+
+    menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    menuBtn.setAttribute(
+      "aria-label",
+      isOpen ? "Close menu" : "Open menu"
+    );
+
+    menuBtn.innerHTML = isOpen ? "✕" : "☰";
+
+  });
+
+  
+
+  mobileMenu.querySelectorAll("a").forEach(function (link) {
+
+    link.addEventListener("click", function () {
+
+      mobileMenu.classList.add("hidden");
+
+      menuBtn.setAttribute("aria-expanded", "false");
+      menuBtn.setAttribute("aria-label", "Open menu");
+
+      menuBtn.innerHTML = "☰";
+
+    });
+
+  });
+
+  document.addEventListener("click", function (e) {
+
+    if (
+      !mobileMenu.contains(e.target) &&
+      !menuBtn.contains(e.target)
+    ) {
+
+      mobileMenu.classList.add("hidden");
+
+      menuBtn.setAttribute("aria-expanded", "false");
+      menuBtn.setAttribute("aria-label", "Open menu");
+
+      menuBtn.innerHTML = "☰";
+
     }
 
-    mobileMenu.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
-        menuBtn.setAttribute("aria-expanded", "false");
-      });
-    });
-  }
+  });
+
+});
+
 
 
   // ==========================
